@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.kaioKsianskievis.TodoList_Authenticated.Models.User;
 
 @Service
@@ -48,8 +49,8 @@ public class JwtService {
                 .getSubject();
             return auth;
                 
-        }catch(JWTCreationException exception){
-            return null;
+        }catch(JWTVerificationException exception){
+            throw new JWTVerificationException("token inválido",exception);
         }
     }
 

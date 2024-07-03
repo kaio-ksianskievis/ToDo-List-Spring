@@ -41,8 +41,8 @@ public class AuthenticationControll {
 
     @PostMapping("user/cadastro")
     private ResponseEntity<?> cadastro(@RequestBody User obj){
-        if(userRepository.findByUsername(obj.getUsername()) != null){
-            return new ResponseEntity<>("usuario já existente",HttpStatus.BAD_REQUEST);
+        if(userRepository.findByEmail(obj.getEmail()) != null){
+            return new ResponseEntity<>("email já existente",HttpStatus.BAD_REQUEST);
         }
         String senhaNova = new BCryptPasswordEncoder().encode(obj.getPassword());
         obj.setPassword(senhaNova);
