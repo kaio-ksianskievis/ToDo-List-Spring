@@ -17,5 +17,8 @@ public interface TaskRepository extends JpaRepository<Tasks,Integer> {
 
     Integer countByUserId_Id(Integer id);
 
+    Integer countById(Integer id);
+
+
     //esse metodo procura pelo id que é a chave estrangeira da tabela tasks
 }

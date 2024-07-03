@@ -33,6 +33,7 @@ public class SecurityConfig {
             .authorizeHttpRequests((auth) ->auth
                 .requestMatchers(HttpMethod.POST,"user/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "user/cadastro").permitAll()
+                .requestMatchers(HttpMethod.GET,"/logout").permitAll()
                 .anyRequest().authenticated())
             .addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
